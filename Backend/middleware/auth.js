@@ -107,7 +107,7 @@ async function authToken(req, res, next) {
 
     // Attach user data to `req.user`
     req.user = {
-      id: user._id,  // Change to _id to match MongoDB
+      id: user.u_id,  // Change to _id to u_id match MongoDB
       role: user.role,
       permissions: user.permissions || [], 
       name: user.name,  // Added name for response

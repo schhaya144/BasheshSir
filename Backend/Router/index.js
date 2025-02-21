@@ -22,16 +22,17 @@ const { saveKYC } = require('../controller/kycController');
 const adminLoginController = require('../controller/adminController/loginAdmin');
 const authRole = require('../middleware/authRole');
 const { createSubadmin } = require('../controller/adminController/createSubadmin');
+const { addCourse, getCourses, updateCourse, deleteCourse, getTotalCourses } = require('../controller/courseController');
+const { addEvent, getEvents, updateEvent, deleteEvent, getTotalEvents } = require('../controller/eventController');
 
 router.post('/signup', userRegisterationController);
 router.get('/currentUser', authToken, getCurrentUser);
-// hgfyf
+// login
 router.post('/login', userLoginController);
 router.post('/admin-login', adminLoginController);
 router.get('/userLogout', userLogout);
 router.get('/get-allusers', getAllUsersController);
 router.post("/create-subadmin", authToken, authRole("manage-users"), createSubadmin )
-
 
 
 
@@ -66,4 +67,23 @@ router.post(
   ]),
   saveKYC
 );
+
+//Course routes
+router.post('/addCourse', upload.single('banner'), addCourse);
+router.get('/getCourses', getCourses);
+router.put(
+  '/updateCourse/:id',
+  upload.single('banner'),
+  updateCourse
+);
+router.delete('/deleteCourse/:id', deleteCourse);
+router.get('/getTotalCourses', getTotalCourses);
+
+// Routes for Event
+router.post('/events', addEvent);
+router.get('/events', getEvents);
+router.put('/events/:id', updateEvent);
+router.delete('/events/:id', deleteEvent);
+router.get('/events/count', getTotalEvents);
+
 module.exports = router;

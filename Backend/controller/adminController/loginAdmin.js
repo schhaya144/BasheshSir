@@ -38,7 +38,7 @@ const adminLoginController = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { u_id: user.u_id, contactNo: user.contactNo, role: user.role },
+      { u_id: user.u_id, contactNo: user.contactNo, role: user.role , permissions: user.permissions },
       process.env.TOKEN_SECRET_KEY,
       { expiresIn: "8h" }
     );
@@ -61,6 +61,7 @@ const adminLoginController = async (req, res) => {
       sessionData: req.session.user,
       success: true,
       role: user.role, // Send role to frontend
+      permissions: user.permissions 
     });
   } catch (error) {
     console.error("Error during login:", error);

@@ -619,7 +619,7 @@ const CourseForm = () => {
                 <td className="px-4 py-2">
                   {course.banner && (
                     <img
-                      src={`http://localhost:5000${course.banner}`}
+                      src={`http://localhost:8077${course.banner}`}
                       alt={course.title}
                       className="w-16 h-16 object-cover"
                     />

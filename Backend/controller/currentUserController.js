@@ -12,8 +12,8 @@ exports.getCurrentUser = async (req, res) => {
       });
     }
 
-    // Use _id instead of u_id
-    const currentUser = await UserModel.findOne({ _id: req.user.id }).select("-password");
+    // Use _id instead of u_id  change u_id to _id
+    const currentUser = await UserModel.findOne({ u_id: req.user.id }).select("-password");
 
     if (!currentUser) {
       return res.status(404).json({
@@ -26,15 +26,7 @@ exports.getCurrentUser = async (req, res) => {
     console.log("User details:", currentUser);
 
     return res.status(200).json({
-      data: {
-        id: currentUser._id,
-        name: currentUser.name,
-        email: currentUser.email,
-        contactNo: currentUser.contactNo,
-        role: currentUser.role,
-        permissions: currentUser.permissions || [],
-        lastLogin: currentUser.lastLogin,
-      },
+      data: currentUser,
       error: false,
       success: true,
       message: "User details retrieved successfully",
