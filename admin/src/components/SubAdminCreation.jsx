@@ -205,7 +205,7 @@ const SubAdminCreation = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white  rounded-lg shadow-lg px-6">
+    <div className=" min-h-screen bg-gray-900 text-white  rounded-lg shadow-lg p-6">
       <div className="w-full p-6 bg-gradient-to-br from-gray-800 via-gray-800 to-gray-800 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-4 border-b border-gray-600 pb-2">Create Subadmin</h2>
         {message && <p className="text-center text-red-400">{message}</p>}

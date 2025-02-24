@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SummaryApi from '../common/SummaryAPI'
 import { MdEdit, MdDelete } from 'react-icons/md'
+import { FiEdit } from 'react-icons/fi'
 
 const EventForm = () => {
   const [name, setName] = useState('')
@@ -248,7 +249,7 @@ const EventForm = () => {
                     View Map
                   </a>
                 </td>
-                <td className="px-4 py-2">
+                <td className=" px-4 py-2 flex justify-center gap-2">
                   {editingEventId === event._id ? (
                     <>
                       <button
@@ -268,15 +269,16 @@ const EventForm = () => {
                     <>
                       <button
                         onClick={() => handleEdit(event)}
-                        className="bg-blue-500 text-white px-2 py-1 rounded-lg mr-2"
+                        className="text-yellow-500"
                       >
-                        <MdEdit className="text-white" />
+                        {/* <MdEdit  /> */}
+                         <FiEdit />
                       </button>
                       <button
                         onClick={() => handleDelete(event._id)}
-                        className="bg-red-600 text-white px-2 py-1 rounded-lg hover:bg-red-700"
+                        className="text-red-500"
                       >
-                        <MdDelete className="text-white" />
+                        <MdDelete />
                       </button>
                     </>
                   )}
