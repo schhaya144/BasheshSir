@@ -15,19 +15,27 @@ const Dashboard = () => {
       const [courses, events, users] = await Promise.all([
         axios.get('http://localhost:8077/api/getTotalCourses'),
         axios.get('http://localhost:8077/api/events/count'),
-        axios.get('http://localhost:8077/api/users/count'), // Fetching user count directly from API
-      ])
-
+        axios.get('http://localhost:8077/api/users/count'),
+      ]);
+  
+      console.log("API Responses:");
+      console.log("Courses:", courses.data); // Should log { total: 1 } or similar
+      console.log("Events:", events.data);
+      console.log("Users:", users.data);
+  
       setCounts({
-        courseCount: courses.data.total,
-        eventCount: events.data.total,
-        enrolledUsers: users.data.total, // Direct API response for user count
-        subAdmins: 5, // Example static value
-      })
+        courseCount: courses.data.total ?? 0,
+        eventCount: events.data.total ?? 0,
+        enrolledUsers: users.data.total ?? 0,
+        subAdmins: 5, // Static example
+      });
+  
     } catch (error) {
-      console.error('Error fetching counts:', error)
+      console.error("Error fetching counts:", error);
     }
-  }
+  };
+  
+  
 
   useEffect(() => {
     fetchCounts()

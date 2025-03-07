@@ -30,3 +30,17 @@ exports.getMembers = async (req, res) => {
       res.status(500).json({ message: "Error deleting user", error });
     }
   }
+
+
+  exports.getTotalUsers = async (req, res) => {
+    try {
+      const totalCount = await UserModel.countDocuments(); // Count total users
+  
+      console.log("Total number of users:", totalCount); // Debugging
+  
+      res.status(200).json({ total: totalCount }); // Send response
+    } catch (err) {
+      console.error("Error counting users:", err);
+      res.status(500).json({ error: "Error counting users." });
+    }
+  };

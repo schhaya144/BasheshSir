@@ -24,7 +24,7 @@ const authRole = require('../middleware/authRole');
 const { createSubadmin } = require('../controller/adminController/createSubadmin');
 const { addCourse, getCourses, updateCourse, deleteCourse, getTotalCourses } = require('../controller/courseController');
 const { addEvent, getEvents, updateEvent, deleteEvent, getTotalEvents } = require('../controller/eventController');
-const { getMembers, updateMembers, deleteMembers } = require('../controller/adminController/memberController');
+const { getMembers, updateMembers, deleteMembers, getTotalUsers } = require('../controller/adminController/memberController');
 
 router.post('/signup', userRegisterationController);
 router.get('/currentUser', authToken, getCurrentUser);
@@ -91,5 +91,6 @@ router.get('/events/count', getTotalEvents);
 router.get('/member', getMembers)
 router.put('/member/:id', updateMembers)
 router.delete('/member/:id', deleteMembers)
+router.get("/users/count", getTotalUsers);
 
 module.exports = router;
