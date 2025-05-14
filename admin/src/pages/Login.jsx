@@ -120,7 +120,7 @@ const AdminLogin = () => {
       localStorage.setItem("userData", JSON.stringify(userData));
 
       // Redirect based on role
-      navigate("/dashboard");
+      navigate("/dashboard/dashboardCards");
     } catch (err) {
       setError(err.message);
     }
